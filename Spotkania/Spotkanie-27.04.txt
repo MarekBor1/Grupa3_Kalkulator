@@ -1,0 +1,11 @@
+Scrum master - Marcin Ryznar
+
+Podczas realizowanego spotkania rozważyliśmy następujące aspekty naszego projektu:
+~ Pomysł interfejsu kalkulatora
+~ Możliwe opcje (między innymi dodawanie, mnożenie, dzielenie itp.) oraz te bardziej zawaansowane (np. wartość bezwzględna, potęgowanie, moduł kątowy)
+~ Możliwe do zaimplementowania klasy odpowiadające danym działaniom.
+~ Ustalenie możliwych krótkich co tygodniowych spotkań w celu przedyskutowania nowych pomysłów. 
+Spotkanie zakończyliśmy wraz z zaplanowanym sposobem działania. Przystąpiliśmy do realizacji implementowania opcji matematycznych kalkulatora w klasie.
+Wygląd oraz sam interfejs naszego projektu pozostawiliśmy do rozpatrzenia w następnych spotkaniach grupowych, ponieważ jasno nie określiliśmy
+finalnej wersji, która miałaby opierać się zaimplementowanych funkcjach. Wciąż poszukujemy coraz to bardziej ciekawych opcji, które można 
+przedstawić w kalkulatorze, aby ten wyróżniał się spośród innych szeroko dostępnych.
