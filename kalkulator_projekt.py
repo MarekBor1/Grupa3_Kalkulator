@@ -79,3 +79,33 @@ class Operation:
             self.result = self.korzen
         else:
             self.result = "BLAD"
+
+    def get_numer_1(self):
+        return self.numer_1
+
+    def get_numer_2(self):
+        return self.numer_2
+
+    def get_operation(self):
+        return self.znak_
+
+    def get_result(self):
+        return self.result
+
+
+    def add_to_memory(operation_obj):
+        global memory
+        memory.append(operation_obj)
+        if len(memory) > 10:
+            memory.pop(0)
+
+
+    def clear_memory():
+        global memory
+        memory = []
+
+def show_memory(result_index: int):
+    global memory
+    global first_number
+    global witch_number
+    global expression
