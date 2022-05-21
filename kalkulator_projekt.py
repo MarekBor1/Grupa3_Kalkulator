@@ -68,3 +68,14 @@ class Operation:
             self.result = Liczby(0, 0)
             self.result.ustaw_modul_katowy((self.numer_1.dostac_kat()) * (self.numer_2.dostac_czesc_rzeczywista()),
                                          self.numer_1.modul() ** int(self.numer_2.dostac_czesc_rzeczywista()))
+        elif znak == 'r':
+            self.korzen = []
+            self.pierwszy_kąt = self.numer_1.dostac_kat() / int(self.numer_2.dostac_czesc_rzeczywista())
+            self.modul_numer = self.numer_1.module() ** (1 / int(self.numer_2.dostac_czesc_rzeczywista()))
+            for i in range(0, int(self.numer_2.dostac_czesc_rzeczywista())):
+                self.korzen.append(Liczby(0, 0))
+                self.korzen[i].ustaw_modul_katowy(
+                    self.pierwszy_kąt + ((2 * math.pi) / int(self.numer_2.dostac_czesc_rzeczywista())) * i, self.modul_numer)
+            self.result = self.korzen
+        else:
+            self.result = "BLAD"
