@@ -113,5 +113,7 @@ def show_memory(result_index: int):
         if temp.get_operation() == "r":
             info = ""
             for i in range(0, len(temp.get_result())):
-                info = info + str(i) + ":  " + str(temp.get_result()[i].get_real_part()) + "+i" + str(
-                    temp.get_result()[i].get_imaginary_part()) + "\n"
+                info = info + str(i) + ":  " + str(temp.get_result()[i].dostac_czesc_rzeczywista()) + "+i" + str(
+                    temp.get_result()[i].dostac_czesc_urojona()) + "\n"
+
+# merson dodaj commita jakiegos bitte
