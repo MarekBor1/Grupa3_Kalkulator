@@ -1,7 +1,6 @@
 from tkinter import *
 import math
 
-
 class Liczby:
     def __init__(self, x_axis, y_axis):
         self.czesc_rzeczywista = x_axis
@@ -106,6 +105,13 @@ class Operation:
 
 def show_memory(result_index: int):
     global memory
-    global first_number
-    global witch_number
-    global expression
+   
+    if len(memory) > result_index:
+        temp = memory[result_index]
+        if temp.get_result() == "BLAD":
+            return "BLAD"
+        if temp.get_operation() == "r":
+            info = ""
+            for i in range(0, len(temp.get_result())):
+                info = info + str(i) + ":  " + str(temp.get_result()[i].get_real_part()) + "+i" + str(
+                    temp.get_result()[i].get_imaginary_part()) + "\n"
