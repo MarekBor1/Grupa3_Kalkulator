@@ -4,6 +4,8 @@ from tkinter import messagebox
 from tkinter.messagebox import showinfo
 from tkinter.simpledialog import askstring
 
+
+#Klasa Liczby oraz dzialania dodawania odejmowania mnozenia dzielenia potegowania i pierwiastkowania
 class Liczby:
     def __init__(self, x_axis, y_axis):
         self.czesc_rzeczywista = x_axis
@@ -39,7 +41,7 @@ class Liczby:
         self.czesc_urojona = math.sin(kat) * modul
 
 
-class Operation:
+class Operacje: 
     def __init__(self, numer1, numer2, znak):
         self.numer_1 = numer1
         self.numer_2 = numer2
@@ -95,16 +97,16 @@ class Operation:
         return self.result
 
 
-    # def dodaj_do_pamieci(operation_obj):
-    #     global memory
-    #     memory.append(operation_obj)
-    #     if len(memory) > 10:
-    #         memory.pop(0)
+def dodaj_do_pamieci(operation_obj):
+    global memory
+    memory.append(operation_obj)
+    if len(memory) > 10:
+            memory.pop(0)
 
 
-    def czysc_pamiec():
-        global memory
-        memory = []
+def czysc_pamiec():
+    global memory
+    memory = []
 
 def test_message_boxx(info):
     messagebox.showinfo("wynik pierwiastek", info)
@@ -114,7 +116,7 @@ def wiadomosc_tekstowa(info):
     number = askstring("jaki wynik?", info)
     return int(number)
 
-
+input_text = StringVar()
 
 def pokaz_pamiec(result_index: int):
     global memory
@@ -172,8 +174,8 @@ def interpretation(first, second, mark):  ####dostaje string daje wynik
     number__1 = number_str_to_number(first)
     number__2 = number_str_to_number(second)
     print(number__1.get_real_part())
-    oper = Operation(number__1, number__2, mark)
-    add_to_memory(oper)  # juz naprawione
+    oper = Operacje(number__1, number__2, mark)
+    dodaj_do_pamieci(oper)  # juz naprawione
 
     if oper.result == "BLAD":
         return "BLAD"
@@ -196,3 +198,18 @@ def interpretation(first, second, mark):  ####dostaje string daje wynik
             return str(oper.get_result()[0].dostac_czesc_rzeczywista())
         return str(oper.get_result()[0].dostac_czesc_rzeczywista()) + "+i" + str(oper.get_result()[0].dostac_czesc_urojona())
     return "BLAD"  # do poprawy
+
+def result_normal(nummber):
+    return str(nummber.get_real_part()) + "+i" + str(nummber.get_imaginary_part())
+
+
+global memory
+memory = []
+global if_first_after_equal
+if_first_after_equal = 0
+# GUI
+
+main_window = Tk()
+# wyglad okna
+main_window.geometry("700x400")
+main_window.title("Calcualtor")
