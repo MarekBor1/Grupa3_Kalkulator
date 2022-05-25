@@ -62,7 +62,7 @@ class Operation:
                                              self.numer_1.dostac_czesc_rzeczywista() * self.numer_2.dostac_czesc_urojona())) / (
                                              self.numer_2.dostac_czesc_rzeczywista() ** 2 + self.numer_2.dostac_czesc_urojona() ** 2))
             else:
-                self.result = "BLAD"
+                self.result = "Nie można dzielić przez '0' "
         elif znak == '^':
             self.result = Liczby(0, 0)
             self.result.ustaw_modul_katowy((self.numer_1.dostac_kat()) * (self.numer_2.dostac_czesc_rzeczywista()),
