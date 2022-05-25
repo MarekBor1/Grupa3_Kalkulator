@@ -1,0 +1,14 @@
+Scrum master - Marek Borkowski
+
+Przedyskutowałem jak dla naszego  product owner'a wygląda Product Goal oraz czego oczekuje od wyniku naszych działań oraz efektu końcowego.
+Jego wymagania zapisane są poniżej:
+-Kalkulator musi mieć następujące funkcjonalności :
+a)obowiązkowo musi wykonywać podstawowe działania matemayczne (dodawanie , mnożenie, dzielenie, odejmowanie, pierwiastkowanie, potegowanie).
+b)kalkulator musi mieć przejrzystą szatę graficzną oraz być w prosty sposób obsługiwalny nawet dla najmłodych
+(product ownerowi zależy na tym , żeby jego produkt rozpowszechnić dla szkół podstawowych, stąd powyższa prośba, żeby nawet dzieci od pierwszej klasy
+nie miały problemu z obsługą naszego produktu).
+c)dobrze by było żeby jednak nasz kalkulator podawał informacje zwrotne w momencie wykonania niezgodnego działania tzn. wyświetlenie jakiegoś komunikatu,
+który będzie informował użytkownika o błędzie np. (" Nie wolno dzielić przez zero" lub "nie można pierwiastować ujemych licz rzeczywistych")
+
+Powyżej zebrane informacje są informacjami wstępnymi i będę stopniowo aktualizowane w dalszej częsci sprintu po konsultacji ze zleceniodawcą, gdy dostarczymy
+pierwsze efekty naszej pracy. 
