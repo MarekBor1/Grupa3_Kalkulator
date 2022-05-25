@@ -213,3 +213,41 @@ main_window = Tk()
 # wyglad okna
 main_window.geometry("700x400")
 main_window.title("Calcualtor")
+
+
+##Poczatek cześci graficznej 
+input_frame = Frame(main_window, width=20, height=50, bd=0, highlightbackground="blue", highlightcolor="blue",
+                    highlightthickness=1)
+input_frame.pack(side=TOP)
+input_field = Entry(input_frame, font=('times', 20, 'bold'), textvariable=input_text, width=50, bg="#eee", bd=0,
+                    justify=RIGHT)
+input_field.grid(row=0, column=0)
+input_field.pack(ipady=10)
+
+# klawisze
+
+btns_frame = Frame(main_window, width=350, height=272.5, bg="grey")
+btns_frame.pack(side=LEFT)
+######
+czysc = Button(btns_frame, text="C", fg="black", width=10, height=3, bd=0, bg="red", cursor="hand2", font="times",
+               activebackground="silver",
+               command=lambda: btn_clear()).grid(row=0, column=1, padx=1, pady=1)
+I = Button(btns_frame, text="zamien na: \n a+ib", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2",
+           font="times",
+           command=lambda: etoi()).grid(row=3, column=5, padx=1, pady=1)
+E = Button(btns_frame, text="zamien na: \n exp(i)", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2",
+           font="times",
+           command=lambda: iore()).grid(row=2, column=5, padx=1, pady=1)
+dziel = Button(btns_frame, text="÷", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2", font="times",
+                activebackground="silver",
+                command=lambda: number_input("/")).grid(row=0, column=5, padx=1, pady=1)
+######
+siedem = Button(btns_frame, text="7", fg="black", width=10, height=3, bd=0, bg="cyan", cursor="hand2", font="times",
+               command=lambda: btn_click(7)).grid(row=1, column=1, padx=1, pady=1)
+osiem = Button(btns_frame, text="8", fg="black", width=10, height=3, bd=0, bg="cyan", cursor="hand2", font="times",
+               command=lambda: btn_click(8)).grid(row=1, column=2, padx=1, pady=1)
+dziewieć = Button(btns_frame, text="9", fg="black", width=10, height=3, bd=0, bg="cyan", cursor="hand2", font="times",
+              command=lambda: btn_click(9)).grid(row=1, column=3, padx=1, pady=1)
+mnożenie = Button(btns_frame, text="*", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2", font="times",
+                  activebackground="silver",
+                  command=lambda: number_input("*")).grid(row=1, column=5, padx=1, pady=1)
