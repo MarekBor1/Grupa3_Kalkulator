@@ -79,41 +79,41 @@ class Operation:
         else:
             self.result = "BLAD"
 
-    def get_numer_1(self):
+    def dostac_numer_1(self):
         return self.numer_1
 
-    def get_numer_2(self):
+    def dostac_numer_2(self):
         return self.numer_2
 
-    def get_operation(self):
+    def dostac_operacje(self):
         return self.znak_
 
-    def get_result(self):
+    def dostac_result(self):
         return self.result
 
 
-    def add_to_memory(operation_obj):
+    def dodaj_do_pamieci(operation_obj):
         global memory
         memory.append(operation_obj)
         if len(memory) > 10:
             memory.pop(0)
 
 
-    def clear_memory():
+    def czysc_pamiec():
         global memory
         memory = []
 
-def show_memory(result_index: int):
+def pokaz_pamiec(result_index: int):
     global memory
    
     if len(memory) > result_index:
         temp = memory[result_index]
-        if temp.get_result() == "BLAD":
+        if temp.dostac_result() == "BLAD":
             return "BLAD"
-        if temp.get_operation() == "r":
+        if temp.dostac_operacje() == "r":
             info = ""
-            for i in range(0, len(temp.get_result())):
-                info = info + str(i) + ":  " + str(temp.get_result()[i].dostac_czesc_rzeczywista()) + "+i" + str(
-                    temp.get_result()[i].dostac_czesc_urojona()) + "\n"
+            for i in range(0, len(temp.dostac_result())):
+                info = info + str(i) + ":  " + str(temp.dostac_result()[i].dostac_czesc_rzeczywista()) + "+i" + str(
+                    temp.dostac_result()[i].dostac_czesc_urojona()) + "\n"
 
 # merson dodaj commita jakiegos bitte
