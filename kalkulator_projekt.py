@@ -1,5 +1,8 @@
 from tkinter import *
 import math
+from tkinter import messagebox
+from tkinter.messagebox import showinfo
+from tkinter.simpledialog import askstring
 
 class Liczby:
     def __init__(self, x_axis, y_axis):
@@ -92,19 +95,32 @@ class Operation:
         return self.result
 
 
-    def dodaj_do_pamieci(operation_obj):
-        global memory
-        memory.append(operation_obj)
-        if len(memory) > 10:
-            memory.pop(0)
+    # def dodaj_do_pamieci(operation_obj):
+    #     global memory
+    #     memory.append(operation_obj)
+    #     if len(memory) > 10:
+    #         memory.pop(0)
 
 
     def czysc_pamiec():
         global memory
         memory = []
 
+def test_message_boxx(info):
+    messagebox.showinfo("wynik pierwiastek", info)
+
+
+def wiadomosc_tekstowa(info):
+    number = askstring("jaki wynik?", info)
+    return int(number)
+
+
+
 def pokaz_pamiec(result_index: int):
     global memory
+    global first_number
+    global witch_number
+    global expression
    
     if len(memory) > result_index:
         temp = memory[result_index]
@@ -116,4 +132,67 @@ def pokaz_pamiec(result_index: int):
                 info = info + str(i) + ":  " + str(temp.dostac_result()[i].dostac_czesc_rzeczywista()) + "+i" + str(
                     temp.dostac_result()[i].dostac_czesc_urojona()) + "\n"
 
-# merson dodaj commita jakiegos bitte
+            numba = int(wiadomosc_tekstowa(info))
+            if numba >= len(temp.dostac_result()):
+                expression = "ERROR"
+                input_text.set(expression)
+            else:
+                input_text.set(expression)
+                x_part = temp.dostac_result()[numba].dostac_czesc_rzeczywista()
+                y_part = temp.dostac_result()[numba].dostac_czesc_urojona()
+                expression = str(x_part) + "+i" + str(y_part)
+                input_text.set(expression)
+        else:
+            if temp.dostac_result().dostac_czesc_urojona() == 0:
+                expression = str(temp.dostac_result().dostac_czesc_rzeczywista())
+            else:
+                expression = str(temp.dostac_result().dostac_czesc_rzeczywista()) + '+i' + str(temp.dostac_result().dostac_czesc_urojona())
+            input_text.set(expression)
+    else:
+        expression = "BLAD"
+        input_text.set(expression)
+
+def number_str_to_number(str_number):  ##dziala
+    numba = Liczby(0, 0)
+    x_param = 0
+    y_param = 0
+    if str_number.find("+i", 0) > 0:
+        x_param = float(str_number[0:str_number.find("+i", 0)])
+        y_param = float(str_number[str_number.find("+i", 0) + 2:])
+        numba.set_both_parts(x_param, y_param)
+    elif str_number.find("e^i(", 0) > 0:
+        x_param = float(str_number[0:str_number.find("e^i(", 0)])
+        y_param = float(str_number[str_number.find("e^i(", 0) + 4:])
+        numba.set_angle_module(y_param, x_param)
+    else:
+        numba.set_both_parts(float(str_number), 0.0)
+    return numba
+
+def interpretation(first, second, mark):  ####dostaje string daje wynik
+    number__1 = number_str_to_number(first)
+    number__2 = number_str_to_number(second)
+    print(number__1.get_real_part())
+    oper = Operation(number__1, number__2, mark)
+    add_to_memory(oper)  # juz naprawione
+
+    if oper.result == "BLAD":
+        return "BLAD"
+    if mark != 'r':
+        if oper.result.dostac_czesc_urojona() == 0:
+            return str(oper.result.dostac_czesc_rzeczywista())
+        return str(oper.result.dostac_czesc_rzeczywista()) + "+i" + str(oper.result.dostac_czesc_urojona())
+    if mark == 'r':
+        string_stream_like_in_cpluspus = ""
+        for i in range(0, len(oper.get_result())):
+            if oper.result[i].dostac_czesc_urojona() == 0:
+                string_stream_like_in_cpluspus = string_stream_like_in_cpluspus + str(i) + ":  " + str(
+                    oper.get_result()[i].dostac_czesc_rzeczywista()) + "\n"
+            else:
+                string_stream_like_in_cpluspus = string_stream_like_in_cpluspus + str(i) + ":  " + str(
+                    oper.get_result()[i].dostac_czesc_rzeczywista()) + "+i" + str(oper.get_result()[i].dostac_czesc_urojona()) + "\n"
+
+        test_message_boxx(string_stream_like_in_cpluspus)
+        if oper.get_result()[0].dostac_czesc_urojona() == 0:
+            return str(oper.get_result()[0].dostac_czesc_rzeczywista())
+        return str(oper.get_result()[0].dostac_czesc_rzeczywista()) + "+i" + str(oper.get_result()[0].dostac_czesc_urojona())
+    return "BLAD"  # do poprawy
