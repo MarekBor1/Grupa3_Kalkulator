@@ -251,3 +251,23 @@ dziewieć = Button(btns_frame, text="9", fg="black", width=10, height=3, bd=0, b
 mnożenie = Button(btns_frame, text="*", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2", font="times",
                   activebackground="silver",
                   command=lambda: number_input("*")).grid(row=1, column=5, padx=1, pady=1)
+######
+cztery = Button(btns_frame, text="4", fg="black", width=10, height=3, bd=0, bg="cyan", cursor="hand2", font="times",
+              command=lambda: btn_click(4)).grid(row=2, column=1, padx=1, pady=1)
+pięc = Button(btns_frame, text="5", fg="black", width=10, height=3, bd=0, bg="cyan", cursor="hand2", font="times",
+              command=lambda: btn_click(5)).grid(row=2, column=2, padx=1, pady=1)
+sześć = Button(btns_frame, text="6", fg="black", width=10, height=3, bd=0, bg="cyan", cursor="hand2", font="times",
+             command=lambda: btn_click(6)).grid(row=2, column=3, padx=1, pady=1)
+minus = Button(btns_frame, text="-", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2", font="times",
+               activebackground="silver",
+               command=lambda: number_input("-")).grid(row=0, column=3, padx=1, pady=1)
+######
+jeden = Button(btns_frame, text="1", fg="black", width=10, height=3, bd=0, bg="cyan", cursor="hand2", font="times",
+             command=lambda: btn_click(1)).grid(row=3, column=1, padx=1, pady=1)
+dwa = Button(btns_frame, text="2", fg="black", width=10, height=3, bd=0, bg="cyan", cursor="hand2", font="times",
+             command=lambda: btn_click(2)).grid(row=3, column=2, padx=1, pady=1)
+trzy = Button(btns_frame, text="3", fg="black", width=10, height=3, bd=0, bg="cyan", cursor="hand2", font="times",
+               command=lambda: btn_click(3)).grid(row=3, column=3, padx=1, pady=1)
+plus = Button(btns_frame, text="+", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2", font="times",
+              activebackground="silver",
+              command=lambda: number_input("+")).grid(row=0, column=2, padx=1, pady=1)
