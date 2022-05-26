@@ -235,7 +235,7 @@ czysc = Button(btns_frame, text="C", fg="black", width=10, height=3, bd=0, bg="r
 I = Button(btns_frame, text="zamien na: \n a+ib", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2",
            font="times",
            command=lambda: etoi()).grid(row=3, column=5, padx=1, pady=1)
-E = Button(btns_frame, text="zamien na: \n exp(i)", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2",
+E = Button(btns_frame, text="zamien na: \n exp(i)", fg="black", width=10, height=3, bd=0, bg="green", cursor="hand2",
            font="times",
            command=lambda: iore()).grid(row=2, column=5, padx=1, pady=1)
 dziel = Button(btns_frame, text="÷", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2", font="times",
