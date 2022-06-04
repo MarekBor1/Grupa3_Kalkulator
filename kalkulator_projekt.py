@@ -214,6 +214,97 @@ main_window = Tk()
 main_window.geometry("700x400")
 main_window.title("Calcualtor")
 
+def btn_click(item):  ####add to input
+    global expression
+    global if_first_after_equal
+    if if_first_after_equal:
+        expression = ""
+        if_first_after_equal = 0
+    expression = expression + str(item)
+    input_text.set(expression)
+
+
+def btn_clear():  ####clear input
+    global expression
+    global witch_number
+    witch_number = 1
+    expression = ""
+    input_text.set("0")
+
+
+def btn_equal():
+    global if_first_after_equal
+    global expression
+    global first_number
+    global mark
+    global second_number
+    global witch_number
+    global result_temp
+    second_number = expression
+    if second_number != "":
+        result_temp = str(interpretation(first_number, second_number, mark))
+        first_number = result_temp
+        witch_number = 1
+        second_number = ""
+        mark = ""
+        input_text.set(result_temp)
+        expression = result_temp
+        if_first_after_equal = 1
+
+
+def iore():
+    global expression
+    num = number_str_to_number(expression)
+    expression = str(num.module()) + "e^i(" + str(num.get_angle())
+    input_text.set(expression)
+
+
+def etoi():
+    global expression
+    num = number_str_to_number(expression)
+    expression = str(num.get_real_part()) + "+i" + str(num.get_imaginary_part())
+    input_text.set(expression)
+
+
+def number_input(item):
+    global first_number
+    global second_number
+    global witch_number
+    global mark
+    global expression
+    global result_temp
+    if witch_number == 2:
+        second_number = expression
+        btn_equal()
+        first_number = result_temp
+        mark = item
+        witch_number = 2
+
+    if witch_number == 1:
+        first_number = expression
+        witch_number = 2
+        mark = item
+        expression = ""
+        result = str(expression)
+        input_text.set(result)
+
+
+def test_message_boxx(info):
+    messagebox.showinfo("wynik pierwiastek", info)
+
+
+def test_message_boxx_root_choice(info):
+    number = askstring("jaki wynik?", info)
+    return int(number)
+
+
+input_text = StringVar()
+btn_clear()
+
+# output text as string
+# input text
+# output text as string
+# input text
 
 ##Poczatek cześci graficznej 
 input_frame = Frame(main_window, width=20, height=50, bd=0, highlightbackground="blue", highlightcolor="blue",
@@ -280,6 +371,6 @@ zero = Button(btns_frame, text="0", fg="black", width=10, height=3, bd=0, bg="wh
 kropka = Button(btns_frame, text=".", fg="black", width=10, height=3, bd=0, bg="#eee", cursor="hand2", font="times",
                activebackground="silver",
                command=lambda: btn_click(".")).grid(row=4, column=2, padx=1, pady=1)
-równa się = Button(btns_frame, text="=", fg="black", width=10, height=3, bd=0, bg="#eee", cursor="hand2", font="times",
+rownasie = Button(btns_frame, text="=", fg="black", width=10, height=3, bd=0, bg="#eee", cursor="hand2", font="times",
                 activebackground="silver",
                 command=lambda: btn_equal()).grid(row=4, column=3, padx=1, pady=1)
