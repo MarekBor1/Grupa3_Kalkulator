@@ -116,7 +116,7 @@ def wiadomosc_tekstowa(info):
     number = askstring("jaki wynik?", info)
     return int(number)
 
-input_text = StringVar()
+# input_text = StringVar()
 
 def pokaz_pamiec(result_index: int):
     global memory
