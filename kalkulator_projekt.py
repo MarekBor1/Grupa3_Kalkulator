@@ -365,7 +365,7 @@ plus = Button(btns_frame, text="+", fg="black", width=10, height=3, bd=0, bg="ye
 ######
 Czyść = Button(btns_frame, text='clear \n memory', fg="black", width=10, height=3, bd=0, bg="#eee", cursor="hand2",
                font="times", activebackground="silver",
-               command=lambda: clear_memory()).grid(row=4, column=4, padx=1, pady=1)
+               command=lambda: czysc_pamiec()).grid(row=4, column=4, padx=1, pady=1)
 zero = Button(btns_frame, text="0", fg="black", width=10, height=3, bd=0, bg="white", cursor="hand2", font="times",
               command=lambda: btn_click(0)).grid(row=4, column=1, padx=1, pady=1)
 kropka = Button(btns_frame, text=".", fg="black", width=10, height=3, bd=0, bg="#eee", cursor="hand2", font="times",
@@ -374,3 +374,7 @@ kropka = Button(btns_frame, text=".", fg="black", width=10, height=3, bd=0, bg="
 rownasie = Button(btns_frame, text="=", fg="black", width=10, height=3, bd=0, bg="#eee", cursor="hand2", font="times",
                 activebackground="silver",
                 command=lambda: btn_equal()).grid(row=4, column=3, padx=1, pady=1)
+#dodać resztę przycisków (zasilanie, plusminus itp.)
+
+main_window.mainloop()
+# END GUI
