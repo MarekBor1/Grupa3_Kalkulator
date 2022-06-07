@@ -211,7 +211,7 @@ if_first_after_equal = 0
 
 main_window = Tk()
 # wyglad okna
-main_window.geometry("700x400")
+main_window.geometry("500x500")
 main_window.title("Calcualtor")
 
 def btn_click(item):  ####add to input
@@ -317,7 +317,7 @@ input_field.pack(ipady=10)
 
 # klawisze
 
-btns_frame = Frame(main_window, width=350, height=272.5, bg="grey")
+btns_frame = Frame(main_window, width=650, height=500, bg="grey")
 btns_frame.pack(side=LEFT)
 ######
 czysc = Button(btns_frame, text="C", fg="black", width=10, height=3, bd=0, bg="red", cursor="hand2", font="times",
@@ -325,13 +325,13 @@ czysc = Button(btns_frame, text="C", fg="black", width=10, height=3, bd=0, bg="r
                command=lambda: btn_clear()).grid(row=0, column=1, padx=1, pady=1)
 I = Button(btns_frame, text="zamien na: \n a+ib", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2",
            font="times",
-           command=lambda: etoi()).grid(row=3, column=5, padx=1, pady=1)
-E = Button(btns_frame, text="zamien na: \n exp(i)", fg="black", width=10, height=3, bd=0, bg="green", cursor="hand2",
+           command=lambda: etoi()).grid(row=3, column=4, padx=1, pady=1)
+E = Button(btns_frame, text="zamien na: \n exp(i)", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2",
            font="times",
-           command=lambda: iore()).grid(row=2, column=5, padx=1, pady=1)
+           command=lambda: iore()).grid(row=2, column=4, padx=1, pady=1)
 dziel = Button(btns_frame, text="÷", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2", font="times",
                 activebackground="silver",
-                command=lambda: number_input("/")).grid(row=0, column=5, padx=1, pady=1)
+                command=lambda: number_input("/")).grid(row=0, column=4, padx=1, pady=1)
 ######
 siedem = Button(btns_frame, text="7", fg="black", width=10, height=3, bd=0, bg="cyan", cursor="hand2", font="times",
                command=lambda: btn_click(7)).grid(row=1, column=1, padx=1, pady=1)
@@ -341,7 +341,7 @@ dziewieć = Button(btns_frame, text="9", fg="black", width=10, height=3, bd=0, b
               command=lambda: btn_click(9)).grid(row=1, column=3, padx=1, pady=1)
 mnożenie = Button(btns_frame, text="*", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2", font="times",
                   activebackground="silver",
-                  command=lambda: number_input("*")).grid(row=1, column=5, padx=1, pady=1)
+                  command=lambda: number_input("*")).grid(row=1, column=4, padx=1, pady=1)
 ######
 cztery = Button(btns_frame, text="4", fg="black", width=10, height=3, bd=0, bg="cyan", cursor="hand2", font="times",
               command=lambda: btn_click(4)).grid(row=2, column=1, padx=1, pady=1)
@@ -363,15 +363,15 @@ plus = Button(btns_frame, text="+", fg="black", width=10, height=3, bd=0, bg="ye
               activebackground="silver",
               command=lambda: number_input("+")).grid(row=0, column=2, padx=1, pady=1)
 ######
-Czyść = Button(btns_frame, text='clear \n memory', fg="black", width=10, height=3, bd=0, bg="#eee", cursor="hand2",
+Czyść = Button(btns_frame, text='clear \n memory', fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2",
                font="times", activebackground="silver",
                command=lambda: czysc_pamiec()).grid(row=4, column=4, padx=1, pady=1)
-zero = Button(btns_frame, text="0", fg="black", width=10, height=3, bd=0, bg="white", cursor="hand2", font="times",
-              command=lambda: btn_click(0)).grid(row=4, column=1, padx=1, pady=1)
-kropka = Button(btns_frame, text=".", fg="black", width=10, height=3, bd=0, bg="#eee", cursor="hand2", font="times",
+zero = Button(btns_frame, text="0", fg="black", width=10, height=3, bd=0, bg="cyan", cursor="hand2", font="times",
+              command=lambda: btn_click(0)).grid(row=4, column=2, padx=1, pady=1)
+kropka = Button(btns_frame, text=".", fg="black", width=10, height=3, bd=0, bg="silver", cursor="hand2", font="times",
                activebackground="silver",
-               command=lambda: btn_click(".")).grid(row=4, column=2, padx=1, pady=1)
-rownasie = Button(btns_frame, text="=", fg="black", width=10, height=3, bd=0, bg="#eee", cursor="hand2", font="times",
+               command=lambda: btn_click(".")).grid(row=4, column=1, padx=1, pady=1)
+rownasie = Button(btns_frame, text="=", fg="black", width=10, height=3, bd=0, bg="silver", cursor="hand2", font="times",
                 activebackground="silver",
                 command=lambda: btn_equal()).grid(row=4, column=3, padx=1, pady=1)
 #dodać resztę przycisków (zasilanie, plusminus itp.)
