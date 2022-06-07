@@ -67,7 +67,7 @@ class Operacje:
                                              self.numer_1.dostac_czesc_rzeczywista() * self.numer_2.dostac_czesc_urojona())) / (
                                              self.numer_2.dostac_czesc_rzeczywista() ** 2 + self.numer_2.dostac_czesc_urojona() ** 2))
             else:
-                self.result = "Nie można dzielić przez '0' "
+                self.result = "BLAD"
         elif znak == '^':
             self.result = Liczby(0, 0)
             self.result.ustaw_modul_katowy((self.numer_1.dostac_kat()) * (self.numer_2.dostac_czesc_rzeczywista()),
@@ -210,7 +210,7 @@ if_first_after_equal = 0
 main_window = Tk()
 # wyglad okna
 main_window.geometry("500x500")
-main_window.title("Calcualtor")
+main_window.title("Kalkulator")
 
 def btn_click(item):  ####add to input
     global expression
