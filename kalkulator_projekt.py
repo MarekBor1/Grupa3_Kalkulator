@@ -24,13 +24,13 @@ class Liczby:
         self.czesc_urojona = parametr
 
     def modul(self):
-        return math.sqrt(self.czesc_rzeczywista * 2 + self.czesc_urojona * 2)
+        return math.sqrt(self.czesc_rzeczywista ** 2 + self.czesc_urojona ** 2)
 
     def set_both_parts(self, parametr_x, parametr_y):
         self.ustaw_czesc_rzeczywista(parametr_x)
         self.ustaw_czesc_urojona(parametr_y)
 
-    def get_angle(self):
+    def dostac_kat(self):
         if self.modul() != 0:
             return math.acos(self.czesc_rzeczywista / self.modul())
         else:
@@ -75,7 +75,7 @@ class Operacje:
         elif znak == 'r':
             self.korzen = []
             self.pierwszy_kąt = self.numer_1.dostac_kat() / int(self.numer_2.dostac_czesc_rzeczywista())
-            self.modul_numer = self.numer_1.module() ** (1 / int(self.numer_2.dostac_czesc_rzeczywista()))
+            self.modul_numer = self.numer_1.modul() ** (1 / int(self.numer_2.dostac_czesc_rzeczywista()))
             for i in range(0, int(self.numer_2.dostac_czesc_rzeczywista())):
                 self.korzen.append(Liczby(0, 0))
                 self.korzen[i].ustaw_modul_katowy(
@@ -185,18 +185,18 @@ def interpretation(first, second, mark):  ####dostaje string daje wynik
         return str(oper.result.dostac_czesc_rzeczywista()) + "+i" + str(oper.result.dostac_czesc_urojona())
     if mark == 'r':
         string_stream_like_in_cpluspus = ""
-        for i in range(0, len(oper.get_result())):
+        for i in range(0, len(oper.dostac_result())):
             if oper.result[i].dostac_czesc_urojona() == 0:
                 string_stream_like_in_cpluspus = string_stream_like_in_cpluspus + str(i) + ":  " + str(
-                    oper.get_result()[i].dostac_czesc_rzeczywista()) + "\n"
+                    oper.dostac_result()[i].dostac_czesc_rzeczywista()) + "\n"
             else:
                 string_stream_like_in_cpluspus = string_stream_like_in_cpluspus + str(i) + ":  " + str(
-                    oper.get_result()[i].dostac_czesc_rzeczywista()) + "+i" + str(oper.get_result()[i].dostac_czesc_urojona()) + "\n"
+                    oper.dostac_result()[i].dostac_czesc_rzeczywista()) + "+i" + str(oper.dostac_result()[i].dostac_czesc_urojona()) + "\n"
 
         test_message_boxx(string_stream_like_in_cpluspus)
-        if oper.get_result()[0].dostac_czesc_urojona() == 0:
-            return str(oper.get_result()[0].dostac_czesc_rzeczywista())
-        return str(oper.get_result()[0].dostac_czesc_rzeczywista()) + "+i" + str(oper.get_result()[0].dostac_czesc_urojona())
+        if oper.dostac_result()[0].dostac_czesc_urojona() == 0:
+            return str(oper.dostac_result()[0].dostac_czesc_rzeczywista())
+        return str(oper.dostac_result()[0].dostac_czesc_rzeczywista()) + "+i" + str(oper.dostac_result()[0].dostac_czesc_urojona())
     return "BLAD"  # do poprawy
 
 def result_normal(nummber):
@@ -323,12 +323,19 @@ btns_frame.pack(side=LEFT)
 czysc = Button(btns_frame, text="C", fg="black", width=10, height=3, bd=0, bg="red", cursor="hand2", font="times",
                activebackground="silver",
                command=lambda: btn_clear()).grid(row=0, column=1, padx=1, pady=1)
-I = Button(btns_frame, text="zamien na: \n a+ib", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2",
-           font="times",
-           command=lambda: etoi()).grid(row=3, column=4, padx=1, pady=1)
-E = Button(btns_frame, text="zamien na: \n exp(i)", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2",
-           font="times",
-           command=lambda: iore()).grid(row=2, column=4, padx=1, pady=1)
+pierw = Button(btns_frame, text="√", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2", font="times",
+              activebackground="silver",
+              command=lambda: number_input("r")).grid(row=0, column=2, padx=1, pady=1)               
+# I = Button(btns_frame, text="zamien na: \n a+ib", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2",
+#            font="times",
+#            command=lambda: etoi()).grid(row=3, column=4, padx=1, pady=1)
+# E = Button(btns_frame, text="zamien na: \n exp(i)", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2",
+#            font="times",
+#            command=lambda: iore()).grid(row=0, column=3, padx=1, pady=1)
+potega = Button(btns_frame, text="xʸ", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2", font="times",
+               activebackground="silver",
+               command=lambda: number_input("^")).grid(row=0, column=3, padx=1, pady=1)
+
 dziel = Button(btns_frame, text="÷", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2", font="times",
                 activebackground="silver",
                 command=lambda: number_input("/")).grid(row=0, column=4, padx=1, pady=1)
@@ -351,7 +358,8 @@ sześć = Button(btns_frame, text="6", fg="black", width=10, height=3, bd=0, bg=
              command=lambda: btn_click(6)).grid(row=2, column=3, padx=1, pady=1)
 minus = Button(btns_frame, text="-", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2", font="times",
                activebackground="silver",
-               command=lambda: number_input("-")).grid(row=0, column=3, padx=1, pady=1)
+               command=lambda: number_input("-")).grid(row=2, column=4, padx=1, pady=1)
+               
 ######
 jeden = Button(btns_frame, text="1", fg="black", width=10, height=3, bd=0, bg="cyan", cursor="hand2", font="times",
              command=lambda: btn_click(1)).grid(row=3, column=1, padx=1, pady=1)
@@ -361,7 +369,7 @@ trzy = Button(btns_frame, text="3", fg="black", width=10, height=3, bd=0, bg="cy
                command=lambda: btn_click(3)).grid(row=3, column=3, padx=1, pady=1)
 plus = Button(btns_frame, text="+", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2", font="times",
               activebackground="silver",
-              command=lambda: number_input("+")).grid(row=0, column=2, padx=1, pady=1)
+              command=lambda: number_input("+")).grid(row=3, column=4, padx=1, pady=1)
 ######
 Czyść = Button(btns_frame, text='clear \n memory', fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2",
                font="times", activebackground="silver",
