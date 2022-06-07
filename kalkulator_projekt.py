@@ -116,8 +116,6 @@ def wiadomosc_tekstowa(info):
     number = askstring("jaki wynik?", info)
     return int(number)
 
-# input_text = StringVar()
-
 def pokaz_pamiec(result_index: int):
     global memory
     global first_number
@@ -165,15 +163,15 @@ def number_str_to_number(str_number):  ##dziala
     elif str_number.find("e^i(", 0) > 0:
         x_param = float(str_number[0:str_number.find("e^i(", 0)])
         y_param = float(str_number[str_number.find("e^i(", 0) + 4:])
-        numba.set_angle_module(y_param, x_param)
+        numba.ustaw_modul_katowy(y_param, x_param)
     else:
         numba.set_both_parts(float(str_number), 0.0)
     return numba
 
-def interpretation(first, second, mark):  ####dostaje string daje wynik
+def interpretation(first, second, mark):  # dostaje string daje wynik
     number__1 = number_str_to_number(first)
     number__2 = number_str_to_number(second)
-    print(number__1.get_real_part())
+    print(number__1.dostac_czesc_rzeczywista())
     oper = Operacje(number__1, number__2, mark)
     dodaj_do_pamieci(oper)  # juz naprawione
 
@@ -185,22 +183,22 @@ def interpretation(first, second, mark):  ####dostaje string daje wynik
         return str(oper.result.dostac_czesc_rzeczywista()) + "+i" + str(oper.result.dostac_czesc_urojona())
     if mark == 'r':
         string_stream_like_in_cpluspus = ""
-        for i in range(0, len(oper.get_result())):
+        for i in range(0, len(oper.dostac_result())):
             if oper.result[i].dostac_czesc_urojona() == 0:
                 string_stream_like_in_cpluspus = string_stream_like_in_cpluspus + str(i) + ":  " + str(
-                    oper.get_result()[i].dostac_czesc_rzeczywista()) + "\n"
+                    oper.dostac_result()[i].dostac_czesc_rzeczywista()) + "\n"
             else:
                 string_stream_like_in_cpluspus = string_stream_like_in_cpluspus + str(i) + ":  " + str(
-                    oper.get_result()[i].dostac_czesc_rzeczywista()) + "+i" + str(oper.get_result()[i].dostac_czesc_urojona()) + "\n"
+                    oper.get_rdostac_resultesult()[i].dostac_czesc_rzeczywista()) + "+i" + str(oper.dostac_result()[i].dostac_czesc_urojona()) + "\n"
 
         test_message_boxx(string_stream_like_in_cpluspus)
-        if oper.get_result()[0].dostac_czesc_urojona() == 0:
-            return str(oper.get_result()[0].dostac_czesc_rzeczywista())
-        return str(oper.get_result()[0].dostac_czesc_rzeczywista()) + "+i" + str(oper.get_result()[0].dostac_czesc_urojona())
+        if oper.dostac_result()[0].dostac_czesc_urojona() == 0:
+            return str(oper.dostac_result()[0].dostac_czesc_rzeczywista())
+        return str(oper.dostac_result()[0].dostac_czesc_rzeczywista()) + "+i" + str(oper.dostac_result()[0].dostac_czesc_urojona())
     return "BLAD"  # do poprawy
 
 def result_normal(nummber):
-    return str(nummber.get_real_part()) + "+i" + str(nummber.get_imaginary_part())
+    return str(nummber.dostac_czesc_rzeczywista()) + "+i" + str(nummber.dostac_czesc_urojona())
 
 
 global memory
@@ -211,7 +209,7 @@ if_first_after_equal = 0
 
 main_window = Tk()
 # wyglad okna
-main_window.geometry("700x400")
+main_window.geometry("500x500")
 main_window.title("Calcualtor")
 
 def btn_click(item):  ####add to input
@@ -262,7 +260,7 @@ def iore():
 def etoi():
     global expression
     num = number_str_to_number(expression)
-    expression = str(num.get_real_part()) + "+i" + str(num.get_imaginary_part())
+    expression = str(num.dostac_czesc_rzeczywista()) + "+i" + str(num.dostac_czesc_urojona())
     input_text.set(expression)
 
 
@@ -317,7 +315,7 @@ input_field.pack(ipady=10)
 
 # klawisze
 
-btns_frame = Frame(main_window, width=350, height=272.5, bg="grey")
+btns_frame = Frame(main_window, width=650, height=500, bg="grey")
 btns_frame.pack(side=LEFT)
 ######
 czysc = Button(btns_frame, text="C", fg="black", width=10, height=3, bd=0, bg="red", cursor="hand2", font="times",
@@ -325,13 +323,13 @@ czysc = Button(btns_frame, text="C", fg="black", width=10, height=3, bd=0, bg="r
                command=lambda: btn_clear()).grid(row=0, column=1, padx=1, pady=1)
 I = Button(btns_frame, text="zamien na: \n a+ib", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2",
            font="times",
-           command=lambda: etoi()).grid(row=3, column=5, padx=1, pady=1)
-E = Button(btns_frame, text="zamien na: \n exp(i)", fg="black", width=10, height=3, bd=0, bg="green", cursor="hand2",
+           command=lambda: etoi()).grid(row=3, column=4, padx=1, pady=1)
+E = Button(btns_frame, text="zamien na: \n exp(i)", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2",
            font="times",
-           command=lambda: iore()).grid(row=2, column=5, padx=1, pady=1)
+           command=lambda: iore()).grid(row=2, column=4, padx=1, pady=1)
 dziel = Button(btns_frame, text="÷", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2", font="times",
                 activebackground="silver",
-                command=lambda: number_input("/")).grid(row=0, column=5, padx=1, pady=1)
+                command=lambda: number_input("/")).grid(row=0, column=4, padx=1, pady=1)
 ######
 siedem = Button(btns_frame, text="7", fg="black", width=10, height=3, bd=0, bg="cyan", cursor="hand2", font="times",
                command=lambda: btn_click(7)).grid(row=1, column=1, padx=1, pady=1)
@@ -341,7 +339,7 @@ dziewieć = Button(btns_frame, text="9", fg="black", width=10, height=3, bd=0, b
               command=lambda: btn_click(9)).grid(row=1, column=3, padx=1, pady=1)
 mnożenie = Button(btns_frame, text="*", fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2", font="times",
                   activebackground="silver",
-                  command=lambda: number_input("*")).grid(row=1, column=5, padx=1, pady=1)
+                  command=lambda: number_input("*")).grid(row=1, column=4, padx=1, pady=1)
 ######
 cztery = Button(btns_frame, text="4", fg="black", width=10, height=3, bd=0, bg="cyan", cursor="hand2", font="times",
               command=lambda: btn_click(4)).grid(row=2, column=1, padx=1, pady=1)
@@ -363,15 +361,15 @@ plus = Button(btns_frame, text="+", fg="black", width=10, height=3, bd=0, bg="ye
               activebackground="silver",
               command=lambda: number_input("+")).grid(row=0, column=2, padx=1, pady=1)
 ######
-Czyść = Button(btns_frame, text='clear \n memory', fg="black", width=10, height=3, bd=0, bg="#eee", cursor="hand2",
+Czyść = Button(btns_frame, text='clear \n memory', fg="black", width=10, height=3, bd=0, bg="yellow", cursor="hand2",
                font="times", activebackground="silver",
                command=lambda: czysc_pamiec()).grid(row=4, column=4, padx=1, pady=1)
-zero = Button(btns_frame, text="0", fg="black", width=10, height=3, bd=0, bg="white", cursor="hand2", font="times",
-              command=lambda: btn_click(0)).grid(row=4, column=1, padx=1, pady=1)
-kropka = Button(btns_frame, text=".", fg="black", width=10, height=3, bd=0, bg="#eee", cursor="hand2", font="times",
+zero = Button(btns_frame, text="0", fg="black", width=10, height=3, bd=0, bg="cyan", cursor="hand2", font="times",
+              command=lambda: btn_click(0)).grid(row=4, column=2, padx=1, pady=1)
+kropka = Button(btns_frame, text=".", fg="black", width=10, height=3, bd=0, bg="silver", cursor="hand2", font="times",
                activebackground="silver",
-               command=lambda: btn_click(".")).grid(row=4, column=2, padx=1, pady=1)
-rownasie = Button(btns_frame, text="=", fg="black", width=10, height=3, bd=0, bg="#eee", cursor="hand2", font="times",
+               command=lambda: btn_click(".")).grid(row=4, column=1, padx=1, pady=1)
+equals = Button(btns_frame, text="=", fg="black", width=10, height=3, bd=0, bg="#eee", cursor="hand2", font="times",
                 activebackground="silver",
                 command=lambda: btn_equal()).grid(row=4, column=3, padx=1, pady=1)
 #dodać resztę przycisków (zasilanie, plusminus itp.)
