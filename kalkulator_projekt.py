@@ -299,10 +299,6 @@ def test_message_boxx_root_choice(info):
 input_text = StringVar()
 btn_clear()
 
-# output text as string
-# input text
-# output text as string
-# input text
 
 ##Poczatek cześci graficznej 
 input_frame = Frame(main_window, width=20, height=50, bd=0, highlightbackground="blue", highlightcolor="blue",
