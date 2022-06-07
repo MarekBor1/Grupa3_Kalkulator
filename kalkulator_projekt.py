@@ -136,7 +136,7 @@ def pokaz_pamiec(result_index: int):
 
             numba = int(wiadomosc_tekstowa(info))
             if numba >= len(temp.dostac_result()):
-                expression = "ERROR"
+                expression = "BLAD"
                 input_text.set(expression)
             else:
                 input_text.set(expression)
