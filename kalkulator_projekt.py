@@ -116,8 +116,6 @@ def wiadomosc_tekstowa(info):
     number = askstring("jaki wynik?", info)
     return int(number)
 
-input_text = StringVar()
-
 def pokaz_pamiec(result_index: int):
     global memory
     global first_number
@@ -136,7 +134,7 @@ def pokaz_pamiec(result_index: int):
 
             numba = int(wiadomosc_tekstowa(info))
             if numba >= len(temp.dostac_result()):
-                expression = "ERROR"
+                expression = "BLAD"
                 input_text.set(expression)
             else:
                 input_text.set(expression)
@@ -170,10 +168,10 @@ def number_str_to_number(str_number):  ##dziala
         numba.set_both_parts(float(str_number), 0.0)
     return numba
 
-def interpretation(first, second, mark):  ####dostaje string daje wynik
+def interpretation(first, second, mark):  # dostaje string daje wynik
     number__1 = number_str_to_number(first)
     number__2 = number_str_to_number(second)
-    print(number__1.get_real_part())
+    print(number__1.dostac_czesc_rzeczywista())
     oper = Operacje(number__1, number__2, mark)
     dodaj_do_pamieci(oper)  # juz naprawione
 
