@@ -116,7 +116,7 @@ def wiadomosc_tekstowa(info):
     number = askstring("jaki wynik?", info)
     return int(number)
 
-input_text = StringVar()
+# input_text = StringVar()
 
 def pokaz_pamiec(result_index: int):
     global memory
@@ -173,7 +173,7 @@ def number_str_to_number(str_number):  ##dziala
 def interpretation(first, second, mark):  ####dostaje string daje wynik
     number__1 = number_str_to_number(first)
     number__2 = number_str_to_number(second)
-    print(number__1.get_real_part())
+    print(number__1.dostac_czesc_rzeczywista())
     oper = Operacje(number__1, number__2, mark)
     dodaj_do_pamieci(oper)  # juz naprawione
 
@@ -371,7 +371,7 @@ zero = Button(btns_frame, text="0", fg="black", width=10, height=3, bd=0, bg="cy
 kropka = Button(btns_frame, text=".", fg="black", width=10, height=3, bd=0, bg="silver", cursor="hand2", font="times",
                activebackground="silver",
                command=lambda: btn_click(".")).grid(row=4, column=1, padx=1, pady=1)
-rownasie = Button(btns_frame, text="=", fg="black", width=10, height=3, bd=0, bg="silver", cursor="hand2", font="times",
+equals = Button(btns_frame, text="=", fg="black", width=10, height=3, bd=0, bg="#eee", cursor="hand2", font="times",
                 activebackground="silver",
                 command=lambda: btn_equal()).grid(row=4, column=3, padx=1, pady=1)
 #dodać resztę przycisków (zasilanie, plusminus itp.)
