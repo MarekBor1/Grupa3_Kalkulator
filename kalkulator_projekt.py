@@ -116,6 +116,11 @@ def wiadomosc_tekstowa(info):
     number = askstring("jaki wynik?", info)
     return int(number)
 
+<<<<<<< HEAD
+=======
+# input_text = StringVar()
+
+>>>>>>> d0292d6b627538d076a781f9154f3722ab470be4
 def pokaz_pamiec(result_index: int):
     global memory
     global first_number
@@ -369,7 +374,7 @@ zero = Button(btns_frame, text="0", fg="black", width=10, height=3, bd=0, bg="cy
 kropka = Button(btns_frame, text=".", fg="black", width=10, height=3, bd=0, bg="silver", cursor="hand2", font="times",
                activebackground="silver",
                command=lambda: btn_click(".")).grid(row=4, column=1, padx=1, pady=1)
-rownasie = Button(btns_frame, text="=", fg="black", width=10, height=3, bd=0, bg="silver", cursor="hand2", font="times",
+equals = Button(btns_frame, text="=", fg="black", width=10, height=3, bd=0, bg="#eee", cursor="hand2", font="times",
                 activebackground="silver",
                 command=lambda: btn_equal()).grid(row=4, column=3, padx=1, pady=1)
 #dodać resztę przycisków (zasilanie, plusminus itp.)
