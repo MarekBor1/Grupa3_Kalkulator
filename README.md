@@ -46,4 +46,4 @@ Python 3.x
 Tkinter (included in standard Python)
 
 ## Author
-Marek Borkowski and team contributors
+Marek Borkowski, Marcin Ryznar and Maksym Rzepka
