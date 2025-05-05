@@ -19,6 +19,7 @@ The application was developed as a team project, including planning documentatio
 ✅ Input validation and error handling
 
 ## Project Structure
+```
 Grupa3_Kalkulator/
 ├── kalkulator_projekt.py
 ├── ProductBacklog
@@ -30,7 +31,7 @@ Grupa3_Kalkulator/
 │ ├── Spotkanie-29.05
 │ ├── Spotkanie_08.05
 │ └── Spotkanie_15.05
-
+```
 ## How to Run
 1. Install Python 3.x
 2. Run the main script:
